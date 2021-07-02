@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-
-
-import api from '../../services/api'
+import ApiService from '../../services/api';
 
 
 @Component({
@@ -14,7 +12,7 @@ import api from '../../services/api'
 
 export class FormComponentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
 
   formGroup = new FormGroup({
@@ -27,9 +25,9 @@ export class FormComponentComponent implements OnInit {
     
   }
 
-  async submitForm(){
+  submitForm(){
     console.log(this.formGroup.value)
-    const response = await api.post("", this.formGroup.value)
+    
   }
 
 }
