@@ -5,6 +5,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 
+export interface DataForm {
+  title: string,
+  type: 'user' | 'interests',
+  body: string,
+  imageURL: string
+}
+
 @Component({
   selector: 'app-custom-form',
   templateUrl: './custom-form.component.html',
@@ -26,12 +33,14 @@ export class CustomFormComponent implements OnInit {
   }
 
   submitForm(){
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, { data : this.formGroup.value});
 
     dialogRef.afterClosed().subscribe(result => {
       if(result){
+
         console.log(this.formGroup.value)
-        this.apiService.post("http://localhost:4200/",this.formGroup.value)
+        this.apiService.post(this.formGroup.value)
+
       } 
     })
   }

@@ -1,5 +1,19 @@
     <mat-dialog-content>
-        Deseja enviar o formulário?
+        Deseja enviar o formulário com as seguintes informações?
+        <ul>
+            <li>
+                <span>Título: </span><span>{{data.title}}</span>
+            </li>
+            <li>
+                <span>Tipo: </span><span>{{data.type}}</span>
+            </li>
+            <li>
+                <span>Corpo do texto: </span><span>{{data.body}}</span>
+            </li>
+            <li>
+                <span>URL da Imagem: </span><span>{{data.imageURL}}</span>
+            </li>
+        </ul>
     </mat-dialog-content>
   <mat-dialog-actions>
     <button mat-button mat-dialog-close>
