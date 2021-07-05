@@ -1,0 +1,28 @@
+<div class="form-wrapper">
+  <div class="form-container">
+      <form [formGroup]="formGroup"  (ngSubmit)="submitForm()" novalidate>
+          <mat-form-field appearance="fill">
+              <mat-label>Title</mat-label>
+              <input matInput  required formControlName="title"/>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+              <mat-label>Type</mat-label>
+              <mat-select required formControlName="type">
+                  <mat-option value="user">User</mat-option>
+                  <mat-option value="interest">Interests</mat-option>
+              </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill"> 
+              <mat-label>Body</mat-label>
+              <textarea matInput required formControlName="body"></textarea>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+              <mat-label>Image Url</mat-label>
+              <input matInput  required formControlName="imageURL"/>
+          </mat-form-field>
+          <div>
+              <button mat-raised-button color="primary" type="submit" [disabled]="!formGroup.valid">Submit Form</button>
+          </div>
+      </form>
+  </div>
+</div>
