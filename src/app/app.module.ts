@@ -9,12 +9,14 @@ import { MaterialModule } from './material.module';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import ApiService from './services/api';
 import { CustomFormComponent } from './views/custom-form/custom-form.component';
+import { ConfirmationDialogComponent } from './views/confirmation-dialog/confirmation-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomFormComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import ApiService from '../../services/api';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 
 @Component({
@@ -10,7 +12,7 @@ import ApiService from '../../services/api';
 })
 export class CustomFormComponent implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, public dialog : MatDialog) { }
 
   formGroup = new FormGroup({
     title : new FormControl(''),
@@ -24,8 +26,14 @@ export class CustomFormComponent implements OnInit {
   }
 
   submitForm(){
-    console.log(this.formGroup.value);
-    this.apiService.post("http://localhost:4200",this.formGroup.value)
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        console.log(this.formGroup.value)
+        this.apiService.post("http://localhost:4200/",this.formGroup.value)
+      } 
+    })
   }
 
 }
