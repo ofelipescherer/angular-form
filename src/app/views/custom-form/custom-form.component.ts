@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import ApiService from '../../services/api';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { PusherService } from 'src/app/services/pusher.service';
 
 
 export interface DataForm {
@@ -19,7 +20,7 @@ export interface DataForm {
 })
 export class CustomFormComponent implements OnInit {
 
-  constructor(private apiService: ApiService, public dialog : MatDialog) { }
+  constructor(private apiService: ApiService, private pusher: PusherService, public dialog : MatDialog) { }
 
   formGroup = new FormGroup({
     title : new FormControl(''),
@@ -39,7 +40,12 @@ export class CustomFormComponent implements OnInit {
       if(result){
 
         console.log(this.formGroup.value)
-        this.apiService.post(this.formGroup.value)
+        //this.pusher.push(this.formGroup.value)
+        //this.apiService.post(this.formGroup.value)
+
+        this.pusher
+        .push(this.formGroup.value)
+        .subscribe(value => this.pusher.push(value));
 
       } 
     })

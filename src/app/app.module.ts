@@ -10,6 +10,7 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 import ApiService from './services/api';
 import { CustomFormComponent } from './views/custom-form/custom-form.component';
 import { ConfirmationDialogComponent } from './views/confirmation-dialog/confirmation-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ConfirmationDialogComponent } from './views/confirmation-dialog/confirm
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
     MaterialModule,
